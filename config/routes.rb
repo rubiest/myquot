@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :dashboard, path: '/dashboard' do
+    get "/" => "dashboard#index"
+  end
+
   root 'pages#index'
 
   devise_for :users, controllers: {
