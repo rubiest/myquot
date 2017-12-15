@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171215064124) do
+ActiveRecord::Schema.define(version: 20171215092018) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "company_profiles", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "company_name"
+    t.string "contact_number"
+    t.text "address"
+    t.string "postcode"
+    t.string "city"
+    t.string "state"
+    t.string "country"
+    t.string "logo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_company_profiles_on_user_id"
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.bigint "user_id"
@@ -57,5 +72,6 @@ ActiveRecord::Schema.define(version: 20171215064124) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "company_profiles", "users"
   add_foreign_key "profiles", "users"
 end

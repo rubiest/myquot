@@ -7,6 +7,7 @@ class User < ApplicationRecord
   enum role: [:user, :admin]
 
   has_one :profile, dependent: :destroy
+  has_many :company_profiles
 
   before_create :build_default_profile
 
