@@ -41,6 +41,10 @@ class User < ApplicationRecord
     end
   end
 
+  def enterprise?
+    enterprise == true
+  end
+
   private
 
     def build_default_profile

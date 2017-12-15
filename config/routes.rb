@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   namespace :account, path: '/account' do
     resource :profiles, except: [:index, :new, :destroy]
+    resources :company_profiles
   end
 
   root 'pages#index'

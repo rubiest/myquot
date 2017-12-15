@@ -1,7 +1,7 @@
 module Authenticable
   extend ActiveSupport::Concern
   included do
-    helper_method :require_admin, :store_location, :redirect_back_or_default, :get_redirect_back_or_default
+    helper_method :require_admin, :require_enterprise, :store_location, :redirect_back_or_default, :get_redirect_back_or_default
   end
 
   private
@@ -9,6 +9,13 @@ module Authenticable
     def require_admin
       unless current_user.try(:admin?)
         flash.notice = "Admin permissions required to access this page."
+        redirect_to root_path
+      end
+    end
+
+    def require_enterprise
+      unless current_user.enterprise?
+        flash.notice = "Oops! We required enterprise account to access this page!"
         redirect_to root_path
       end
     end
