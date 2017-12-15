@@ -4,5 +4,5 @@
 
 ## What you have to know?
 
-- Enterprise account can create company profile while Normal account can't.
+- Enterprise account can create multiple company profile while Normal account can't.
 - With company profile, you can send the quote to the client with your address as a company address.
