@@ -26,6 +26,11 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+  <div class="field">
+    <%= f.check_box :enterprise %>
+    <%= f.label :enterprise %> Make this account as an Enterprise
+  </div>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>

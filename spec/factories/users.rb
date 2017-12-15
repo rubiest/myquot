@@ -6,6 +6,7 @@ FactoryBot.define do
     password_confirmation 'secret'
     confirmed_at { Date.today }
     confirmation_sent_at { Date.today }
+    enterprise { false }
     role 0
   end
 
@@ -16,9 +17,10 @@ FactoryBot.define do
     password_confirmation 'secret'
     confirmed_at { Date.today }
     confirmation_sent_at { Date.today }
+    enterprise { false }
     role 1
   end
-  
+
   factory :user_with_profile, parent: :user do
     after(:build) do |user|
       user.profile = create(:profile)
