@@ -6,6 +6,10 @@ class User < ApplicationRecord
 
   enum role: [:user, :admin]
 
+  has_one :profile, dependent: :destroy
+
+  before_create :build_default_profile
+
   attr_accessor :login
 
   validates :username,
@@ -37,4 +41,9 @@ class User < ApplicationRecord
   end
 
   private
+
+    def build_default_profile
+      build_profile
+      true
+    end
 end

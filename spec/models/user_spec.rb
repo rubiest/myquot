@@ -29,5 +29,12 @@ RSpec.describe User, type: :model do
       expect(create(:user, password: 'secret',
                            password_confirmation: 'secret')).to be_valid
     end
+
+    # test with profile
+    describe "profile" do
+      it "should have a valid profile factory" do
+        expect(FactoryBot.create(:profile)).to be_valid
+      end
+    end
   end
 end

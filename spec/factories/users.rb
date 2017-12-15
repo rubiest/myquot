@@ -18,4 +18,10 @@ FactoryBot.define do
     confirmation_sent_at { Date.today }
     role 1
   end
+  
+  factory :user_with_profile, parent: :user do
+    after(:build) do |user|
+      user.profile = create(:profile)
+    end
+  end
 end

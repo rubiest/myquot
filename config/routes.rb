@@ -3,6 +3,10 @@ Rails.application.routes.draw do
     get "/" => "dashboard#index"
   end
 
+  namespace :account, path: '/account' do
+    resource :profiles, except: [:index, :new, :destroy]
+  end
+
   root 'pages#index'
 
   devise_for :users, controllers: {

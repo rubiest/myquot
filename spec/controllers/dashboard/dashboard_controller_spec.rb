@@ -6,11 +6,9 @@ RSpec.describe Dashboard::DashboardController, type: :controller do
 
   describe "GET #index" do
     describe "when user is logged in" do
-      before { valid_session }
-
       it "returns http success" do
-        get :index
-        expect(response).to have_http_status(:success)
+        get :index, session: valid_session
+        expect(response).to be_success
       end
     end
 
