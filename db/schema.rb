@@ -10,10 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171215092018) do
+ActiveRecord::Schema.define(version: 20171222034312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "clients", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "uniq_id"
+    t.string "contact_person_name"
+    t.string "contact_person_email"
+    t.string "contact_person_phone"
+    t.string "company_name"
+    t.text "company_address"
+    t.string "company_postcode"
+    t.string "company_city"
+    t.string "company_state"
+    t.string "company_country"
+    t.string "company_email"
+    t.string "company_phone_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["uniq_id"], name: "index_clients_on_uniq_id", unique: true
+    t.index ["user_id"], name: "index_clients_on_user_id"
+  end
 
   create_table "company_profiles", force: :cascade do |t|
     t.bigint "user_id"
@@ -72,6 +92,7 @@ ActiveRecord::Schema.define(version: 20171215092018) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "clients", "users"
   add_foreign_key "company_profiles", "users"
   add_foreign_key "profiles", "users"
 end
