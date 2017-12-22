@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171222034312) do
+ActiveRecord::Schema.define(version: 20171222042137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,24 @@ ActiveRecord::Schema.define(version: 20171222034312) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
+  create_table "quotations", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "client_id"
+    t.string "ref_number"
+    t.datetime "valid_until"
+    t.integer "status", default: 0
+    t.decimal "sub_total", precision: 8, scale: 2
+    t.decimal "tax_rate", precision: 3, scale: 2
+    t.decimal "tax", precision: 8, scale: 2
+    t.decimal "total", precision: 8, scale: 2
+    t.text "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_quotations_on_client_id"
+    t.index ["ref_number"], name: "index_quotations_on_ref_number", unique: true
+    t.index ["user_id"], name: "index_quotations_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "username", default: "", null: false
@@ -95,4 +113,6 @@ ActiveRecord::Schema.define(version: 20171222034312) do
   add_foreign_key "clients", "users"
   add_foreign_key "company_profiles", "users"
   add_foreign_key "profiles", "users"
+  add_foreign_key "quotations", "clients"
+  add_foreign_key "quotations", "users"
 end

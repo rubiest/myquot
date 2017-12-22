@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
   has_many :company_profiles
   has_many :clients
+  has_many :quotations
 
   before_create :build_default_profile
 

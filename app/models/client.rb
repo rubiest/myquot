@@ -1,5 +1,6 @@
 class Client < ApplicationRecord
   belongs_to :user
+  has_many :quotations
 
   validates_presence_of :contact_person_name, :company_name
 
