@@ -5,7 +5,7 @@ RSpec.describe Account::CompanyProfilesController, type: :controller do
   let(:company_profile) { FactoryBot.create(:company_profile, user_id: enterprise_user.id) }
   let(:valid_attributes) { FactoryBot.attributes_for :company_profile }
   let(:invalid_attributes) { FactoryBot.attributes_for(:company_profile).merge({company_name: nil}) }
-  let(:new_attributes) { FactoryBot.attributes_for(:profile).merge({company_name: "Johan"}) }
+  let(:new_attributes) { FactoryBot.attributes_for(:company_profile).merge({company_name: "Johan"}) }
   let(:valid_session) { sign_in(user) }
   let(:valid_enterprise_session) { sign_in(enterprise_user) }
 

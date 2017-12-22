@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  namespace :dashboard, path: '/dashboard' do
+  namespace :dashboard, path: '/' do
     get "/" => "dashboard#index"
+    resources :clients
   end
+
 
   namespace :account, path: '/account' do
     resource :profiles, except: [:index, :new, :destroy]
