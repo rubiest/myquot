@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   namespace :dashboard, path: '/' do
-    get "/" => "dashboard#index"
+    get "/dashboard" => "dashboard#index"
     resources :clients
   end
 
