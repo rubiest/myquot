@@ -20,5 +20,8 @@ RSpec.describe Client, type: :model do
     it "should be valid with a company name on create" do
       expect(FactoryBot.build(:client, company_name: Faker::Name.first_name)).to be_valid
     end
+    it "should have uniq_id after client is created" do
+      expect(FactoryBot.build(:client, uniq_id: Faker::Code.asin)).to be_valid
+    end
   end
 end
