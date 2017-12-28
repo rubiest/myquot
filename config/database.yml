@@ -78,6 +78,12 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+staging:
+  <<: *default
+  database: myquot_staging
+  username: myquot
+  password: <%= ENV['MYQUOT_DATABASE_PASSWORD'] %>
+
 production:
   <<: *default
   database: myquot_production
