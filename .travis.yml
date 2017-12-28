@@ -6,7 +6,7 @@ script:
 before_script:
   - psql -c 'create database myquot_test;' -U postgres
 rvm:
-  - 2.5.0
+  - 2.4.2
 services:
   - postgresql
   - memcached
