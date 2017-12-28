@@ -1,4 +1,4 @@
-class Account::CompanyProfilesController < ApplicationController
+class Account::CompanyProfilesController < DashboardController
   before_action :authenticate_user!
   before_action :require_enterprise
   before_action :set_user, only: [:index, :new, :create, :edit, :update, :destroy, :show]
