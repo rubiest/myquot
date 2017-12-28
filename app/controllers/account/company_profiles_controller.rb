@@ -1,4 +1,4 @@
-class Account::CompanyProfilesController < ApplicationController
+class Account::CompanyProfilesController < DashboardController
   before_action :authenticate_user!
   before_action :require_enterprise
   before_action :set_user, only: [:index, :new, :create, :edit, :update, :destroy, :show]
@@ -61,6 +61,6 @@ class Account::CompanyProfilesController < ApplicationController
     end
 
     def company_profile_params
-      params.require(:company_profile).permit(:user_id, :company_name, :contact_number, :address, :postcode, :city, :state, :country, :logo)
+      params.require(:company_profile).permit(:user_id, :company_name, :contact_number, :address, :postcode, :city, :state, :country, :logo, :reg_num)
     end
 end

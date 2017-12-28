@@ -9,5 +9,6 @@ FactoryBot.define do
     state { Faker::Address.state }
     country { Faker::Address.country }
     logo { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'media', 'avatar.png')) }
+    reg_num { Faker::Code.asin }
   end
 end

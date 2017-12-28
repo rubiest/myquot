@@ -1,4 +1,4 @@
-class Account::ProfilesController < ApplicationController
+class Account::ProfilesController < DashboardController
   before_action :authenticate_user!
   before_action :set_profile, only: [:show, :edit, :update]
 
