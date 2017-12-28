@@ -1,1 +1,39 @@
-hello
+<% if @company_profiles.any? %>
+  <%= link_to "Add new", new_account_company_profile_path, class: "btn btn-primary btn-sm pull-right" %>
+  <br><br>
+  <table class="table table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Company Name</th>
+        <th scope="col">Contact Number</th>
+        <th scope="col">Date Added</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @company_profiles.each_with_index do |company_profile, i| %>
+        <tr>
+          <th><%= i + 1 %></th>
+          <td><%= company_profile.company_name %></td>
+          <td><%= company_profile.contact_number %></td>
+          <td><%= company_profile.created_at.strftime("%d %B %Y") %></td>
+          <td>
+            <div class="btn-group btn-group-sm">
+              <%= link_to "Edit", edit_account_company_profile_path(company_profile), class: "btn btn-primary" %>
+              <%= link_to "Show", account_company_profile_path(company_profile), class: "btn btn-secondary" %>
+              <%= link_to "Delete", account_company_profile_path(company_profile), method: :delete, class: "btn btn-danger" %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="alert alert-warning" role="alert">
+    <h4 class="alert-heading">Oops!</h4>
+    <p>Seems like you don't have any active company profile right now in your account. Please create one <%= link_to "here", new_account_company_profile_path %>!</p>
+    <hr>
+    <p class="mb-0 small"><i>With your enterprise account status, you are allowed to create unlimited number of company profiles in your account.</i></p>
+  </div>
+<% end %>

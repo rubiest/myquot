@@ -1,0 +1,56 @@
+<% if @company_profile.errors.any? %>
+<div class="alert alert-danger alert-dismissable">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <strong><%= pluralize(@company_profile.errors.count, "error") %> prohibited this user from being saved:</strong>
+  <ul>
+    <% @company_profile.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="form-group">
+  <%= f.label :company_name %>
+  <%= f.text_field :company_name, id: :company_profile_company_name, class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :contact_number %>
+  <%= f.text_field :contact_number, id: :company_profile_contact_number, class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :address %>
+  <%= f.text_area :address, id: :company_profile_address, class: "form-control", rows: 3 %>
+</div>
+
+<div class="form-group">
+  <%= f.label :postcode %>
+  <%= f.text_field :postcode, id: :company_profile_postcode, class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :city %>
+  <%= f.text_field :city, id: :company_profile_city, class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :state %>
+  <%= f.text_field :state, id: :company_profile_state, class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :country %>
+  <%= f.text_field :country, id: :company_profile_country, class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :logo %>
+  <%= f.text_field :logo, id: :company_profile_logo, class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.submit "Submit", class: "btn btn-primary" %>
+  <%= link_to "Cancel", account_company_profiles_path, class: "btn btn-default" %>
+</div>

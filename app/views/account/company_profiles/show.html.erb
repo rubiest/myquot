@@ -1,1 +1,48 @@
-<%= @company_profile.company_name %>
+<div class="centered-box">
+  <div class="card">
+    <div class="card-header">
+      <%= @company_profile.company_name %>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-3">
+          <%= image_tag 'avatar.png', class: "img-thumbnail" %>
+        </div>
+        <div class="col-md-9">
+          <table class="table table-bordered table-responsive">
+            <tbody>
+              <tr>
+                <th>Contact Number</th>
+                <td><%= @company_profile.contact_number %></td>
+              </tr>
+              <tr>
+                <th>Address</th>
+                <td><%= @company_profile.address %></td>
+              </tr>
+              <tr>
+                <th>Postcode</th>
+                <td><%= @company_profile.postcode %></td>
+              </tr>
+              <tr>
+                <th>City</th>
+                <td><%= @company_profile.city %></td>
+              </tr>
+              <tr>
+                <th>State</th>
+                <td><%= @company_profile.state %></td>
+              </tr>
+              <tr>
+                <th>Country</th>
+                <td><%= @company_profile.country %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <%= link_to 'Edit company profile', edit_account_company_profile_path(@company_profile), class: "btn btn-primary" %>
+      <%= link_to 'Back to listings', account_company_profiles_path, class: "btn btn-link" %>
+    </div>
+  </div>
+</div>
