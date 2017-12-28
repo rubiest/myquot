@@ -61,6 +61,6 @@ class Account::CompanyProfilesController < DashboardController
     end
 
     def company_profile_params
-      params.require(:company_profile).permit(:user_id, :company_name, :contact_number, :address, :postcode, :city, :state, :country, :logo)
+      params.require(:company_profile).permit(:user_id, :company_name, :contact_number, :address, :postcode, :city, :state, :country, :logo, :reg_num)
     end
 end

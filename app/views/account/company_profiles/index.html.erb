@@ -15,7 +15,7 @@
       <% @company_profiles.each_with_index do |company_profile, i| %>
         <tr>
           <th><%= i + 1 %></th>
-          <td><%= company_profile.company_name %></td>
+          <td><%= company_profile.company_name %> (<%= company_profile.reg_num %>)</td>
           <td><%= company_profile.contact_number %></td>
           <td><%= company_profile.created_at.strftime("%d %B %Y") %></td>
           <td>
