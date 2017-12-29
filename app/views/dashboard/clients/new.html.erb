@@ -1,0 +1,12 @@
+<div class="centered-box">
+  <div class="card">
+    <div class="card-header">
+      Add New Client
+    </div>
+    <div class="card-body">
+      <%= form_for @client, url: dashboard_clients_path, multipart: true, html: { class: "form-horizontal form-bordered", method: :post } do |f| %>
+        <%= render partial: 'form', locals: {f: f, post: @client} %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="centered-box">
+  <div class="card">
+    <div class="card-header">
+      Editing Client
+    </div>
+    <div class="card-body">
+      <%= form_for @client, url: dashboard_client_path, multipart: true, html: { class: "form-horizontal form-bordered", method: :patch } do |f| %>
+        <%= render partial: 'form', locals: {f: f, post: @client} %>
+      <% end %>
+    </div>
+  </div>
+</div>

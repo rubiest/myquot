@@ -1,1 +1,57 @@
-<%= @client.contact_person_name %>
+<div class="centered-box">
+  <div class="card">
+    <div class="card-header">
+      <%= @client.contact_person_name %> (<%= @client.uniq_id %>)
+    </div>
+    <div class="card-body">
+      <table class="table table-bordered table-responsive">
+        <tbody>
+          <tr>
+            <th>Contact Person Email</th>
+            <td><%= @client.contact_person_email %></td>
+          </tr>
+          <tr>
+            <th>Contact Person Phone Number</th>
+            <td><%= @client.contact_person_phone %></td>
+          </tr>
+          <tr>
+            <th>Company Name</th>
+            <td><%= @client.company_name %></td>
+          </tr>
+          <tr>
+            <th>Company Address</th>
+            <td><%= @client.company_address %></td>
+          </tr>
+          <tr>
+            <th>Company Postcode</th>
+            <td><%= @client.company_postcode %></td>
+          </tr>
+          <tr>
+            <th>Company City</th>
+            <td><%= @client.company_city %></td>
+          </tr>
+          <tr>
+            <th>Company State</th>
+            <td><%= @client.company_state %></td>
+          </tr>
+          <tr>
+            <th>Company Country</th>
+            <td><%= @client.company_country %></td>
+          </tr>
+          <tr>
+            <th>Company Email</th>
+            <td><%= @client.company_email %></td>
+          </tr>
+          <tr>
+            <th>Company Phone Number</th>
+            <td><%= @client.company_phone_number %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer">
+      <%= link_to 'Edit client', edit_dashboard_client_path(@client), class: "btn btn-primary" %>
+      <%= link_to 'Back to listings', dashboard_clients_path, class: "btn btn-link" %>
+    </div>
+  </div>
+</div>

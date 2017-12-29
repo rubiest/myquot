@@ -23,6 +23,15 @@
     </ul>
     <ul class="navbar-nav my-2 my-lg-0">
       <% if user_signed_in? %>
+        <% if current_user.enterprise? %>
+          <li class="nav-item">
+            <span class="badge badge-success" style="margin-top: 14px;">Enterprise</span>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <span class="badge badge-dark" style="margin-top: 14px;">Non-Enterprise</span>
+          </li>
+        <% end %>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <%= image_tag 'avatar.png', class: "rounded-circle img-fluid img-thumbnail", width: 30, style: "margin: -5px 0;" %> <%= current_user.username %>

@@ -1,1 +1,37 @@
-hello
+<% if @clients.any? %>
+  <%= link_to "Add new", new_dashboard_client_path, class: "btn btn-primary btn-sm pull-right" %>
+  <br><br>
+  <table class="table table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Contact Person Name</th>
+        <th scope="col">Contact Number</th>
+        <th scope="col">Date Added</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @clients.each_with_index do |client, i| %>
+        <tr>
+          <th><%= i + 1 %></th>
+          <td><%= client.contact_person_name %> (<%= client.uniq_id %>)</td>
+          <td><%= client.contact_person_phone %></td>
+          <td><%= client.created_at.strftime("%d %B %Y") %></td>
+          <td>
+            <div class="btn-group btn-group-sm">
+              <%= link_to "Edit", edit_dashboard_client_path(client), class: "btn btn-primary" %>
+              <%= link_to "Show", dashboard_client_path(client), class: "btn btn-secondary" %>
+              <%= link_to "Delete", dashboard_client_path(client), method: :delete, class: "btn btn-danger" %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="alert alert-warning" role="alert">
+    <h4 class="alert-heading">Oops!</h4>
+    <p>Seems like you don't have any client right now in your account. Please create one <%= link_to "here", new_dashboard_client_path %>!</p>
+  </div>
+<% end %>

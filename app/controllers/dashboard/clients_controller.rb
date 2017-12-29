@@ -8,7 +8,7 @@ class Dashboard::ClientsController < DashboardController
   end
 
   def new
-    @client ||= CompanyProfile.new
+    @client ||= Client.new
     render
   end
 
