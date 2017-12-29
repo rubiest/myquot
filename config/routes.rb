@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   namespace :dashboard, path: '/' do
     get "/dashboard" => "dashboard#index"
     resources :clients
+    resources :quotations
   end
 
 

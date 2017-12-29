@@ -1,0 +1,12 @@
+<div class="centered-box">
+  <div class="card">
+    <div class="card-header">
+      Editing Quotation
+    </div>
+    <div class="card-body">
+      <%= form_for @quotation, url: dashboard_quotation_path, multipart: true, html: { class: "form-horizontal form-bordered", method: :patch } do |f| %>
+        <%= render partial: 'form', locals: {f: f, post: @quotation} %>
+      <% end %>
+    </div>
+  </div>
+</div>

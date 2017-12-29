@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 20171228081454) do
     t.datetime "valid_until"
     t.integer "status", default: 0
     t.decimal "sub_total", precision: 8, scale: 2
-    t.decimal "tax_rate", precision: 3, scale: 2
+    t.decimal "tax_rate", precision: 4, scale: 3
     t.decimal "tax", precision: 8, scale: 2
     t.decimal "total", precision: 8, scale: 2
     t.text "note"

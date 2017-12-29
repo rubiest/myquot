@@ -11,4 +11,8 @@ class Client < ApplicationRecord
     uniq_id = (0...5).map { random[rand(random.length)] }.join
     self.update_attribute(:uniq_id, "MQ-" + uniq_id)
   end
+
+  def client_details
+    "#{contact_person_name} (#{uniq_id}) - #{company_name}"
+  end
 end

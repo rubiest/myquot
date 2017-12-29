@@ -1,4 +1,5 @@
 class Quotation < ApplicationRecord
+  enum status: [:saved, :sent, :accepted, :rejected]
   belongs_to :user
   belongs_to :client
 

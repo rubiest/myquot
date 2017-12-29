@@ -62,35 +62,35 @@ RSpec.describe Dashboard::ClientsController, type: :controller do
   end
 
   describe "POST #create" do
-      context "with valid attributes" do
-        it "saves the company profile" do
-          expect do
-            post :create, params: { client: valid_attributes }, session: valid_session
-          end.to change(Client, :count).by(1)
-        end
-
-        it "redirects to the company profile index" do
+    context "with valid attributes" do
+      it "saves the company profile" do
+        expect do
           post :create, params: { client: valid_attributes }, session: valid_session
-          expect(response).to redirect_to dashboard_clients_url
-        end
+        end.to change(Client, :count).by(1)
       end
 
-      context "with invalid attributes" do
-        it "does not save the company profile" do
-          expect do
-            post :create, params: { client: invalid_attributes }, session: valid_session
-          end.to change(Client, :count).by(0)
-        end
-        it "renders new on failed create" do
+      it "redirects to the company profile index" do
+        post :create, params: { client: valid_attributes }, session: valid_session
+        expect(response).to redirect_to dashboard_clients_url
+      end
+    end
+
+    context "with invalid attributes" do
+      it "does not save the company profile" do
+        expect do
           post :create, params: { client: invalid_attributes }, session: valid_session
-          expect(response).to have_http_status(:success)
-        end
+        end.to change(Client, :count).by(0)
       end
+      it "renders new on failed create" do
+        post :create, params: { client: invalid_attributes }, session: valid_session
+        expect(response).to have_http_status(:success)
+      end
+    end
 
-      it " will redirect to login url if user is not login" do
-        post :create, params: { id: client.id }
-        expect(response).to redirect_to new_user_session_url
-      end
+    it " will redirect to login url if user is not login" do
+      post :create, params: { id: client.id }
+      expect(response).to redirect_to new_user_session_url
+    end
   end
 
   describe "PUT #update" do
