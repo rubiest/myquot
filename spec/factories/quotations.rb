@@ -4,7 +4,7 @@ FactoryBot.define do
     association :client, factory: :client
     ref_number { Faker::Code.asin }
     valid_until { Faker::Date.forward(23) }
-    status 0
+    status "saved"
     sub_total "1298.00"
     tax_rate "0.10"
     tax "129.80"
