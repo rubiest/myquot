@@ -3,6 +3,7 @@ class Quotation < ApplicationRecord
   belongs_to :user
   belongs_to :client
   has_many :items, as: :itemable, dependent: :destroy
+  accepts_nested_attributes_for :items, allow_destroy: true
 
   after_create :create_ref_number
 

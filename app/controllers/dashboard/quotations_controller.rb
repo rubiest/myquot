@@ -64,6 +64,6 @@ class Dashboard::QuotationsController < DashboardController
     end
 
     def quotation_params
-      params.require(:quotation).permit(:user_id, :client_id, :ref_number, :valid_until, :status, :sub_total, :tax_rate, :tax, :total, :note)
+      params.require(:quotation).permit(:user_id, :client_id, :ref_number, :valid_until, :status, :sub_total, :tax_rate, :tax, :total, :note, items_attributes: [:id, :itemable_type, :itemable_id, :description, :quantity, :price, :total_price, :_destroy])
     end
 end

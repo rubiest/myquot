@@ -21,23 +21,53 @@
 </div>
 
 <div class="form-group">
-  <%= f.label :sub_total %>
-  <%= f.text_field :sub_total, id: :quotation_sub_total, class: "form-control" %>
+  <div id="items">
+    <%= f.fields_for :items do |item| %>
+      <%= render partial: 'item_fields', locals: {f: item} %>
+    <% end %>
+    <hr>
+    <%= link_to_add_association "Add item", f, :items, class: "btn btn-sm btn-success" %>
+  </div>
 </div>
 
-<div class="form-group">
-  <%= f.label :tax_rate %>
-  <%= f.text_field :tax_rate, id: :quotation_tax_rate, class: "form-control" %>
-</div>
+<hr>
 
-<div class="form-group">
-  <%= f.label :tax %>
-  <%= f.text_field :tax, id: :quotation_tax, class: "form-control" %>
+<div class="row">
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= f.label :sub_total %>
+      <div class="input-group">
+        <span class="input-group-addon">$</span>
+        <%= f.number_field :sub_total, id: :quotation_sub_total, class: "form-control" %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= f.label :tax_rate %>
+      <div class="input-group">
+    <%= f.number_field :tax_rate, id: :quotation_tax_rate, class: "form-control" %>
+        <span class="input-group-addon">%</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= f.label :tax %>
+      <div class="input-group">
+        <span class="input-group-addon">$</span>
+        <%= f.number_field :tax, id: :quotation_tax, class: "form-control" %>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="form-group">
   <%= f.label :total %>
-  <%= f.text_field :total, id: :quotation_total, class: "form-control" %>
+  <div class="input-group">
+    <span class="input-group-addon">$</span>
+    <%= f.number_field :total, id: :quotation_total, class: "form-control" %>
+  </div>
 </div>
 
 <div class="form-group">
