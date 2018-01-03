@@ -2,6 +2,7 @@ class Quotation < ApplicationRecord
   enum status: [:saved, :sent, :accepted, :rejected]
   belongs_to :user
   belongs_to :client
+  has_many :items, as: :itemable, dependent: :destroy
 
   after_create :create_ref_number
 

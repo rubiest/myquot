@@ -10,5 +10,8 @@ FactoryBot.define do
     tax "129.80"
     total "1427.80"
     note { Faker::Lorem.paragraph(2) }
+    after(:create) do |quotation|
+      FactoryBot.create(:item, itemable: quotation)
+    end
   end
 end
