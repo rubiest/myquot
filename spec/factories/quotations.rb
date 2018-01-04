@@ -2,6 +2,7 @@ FactoryBot.define do
   factory :quotation do
     association :user, factory: :user
     association :client, factory: :client
+    association :sender_id, factory: :company_profile
     ref_number { Faker::Code.asin }
     valid_until { Faker::Date.forward(23) }
     status "saved"
