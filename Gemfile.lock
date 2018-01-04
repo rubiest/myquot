@@ -72,6 +72,7 @@ GEM
     capistrano-sidekiq (0.20.0)
       capistrano (>= 3.9.0)
       sidekiq (>= 3.4)
+    cocoon (1.2.11)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
@@ -297,6 +298,7 @@ DEPENDENCIES
   capistrano-rails (~> 1.1)
   capistrano-rbenv (~> 2.1)
   capistrano-sidekiq
+  cocoon
   coffee-rails (~> 4.2)
   config
   database_cleaner

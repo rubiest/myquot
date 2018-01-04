@@ -10,6 +10,13 @@
 </div>
 <% end %>
 
+<% if current_user.enterprise? %>
+<div class="form-group">
+  <%= f.label :sender_id %>
+  <%= f.collection_select :sender_id, @company_profiles, :id, :company_name, { prompt: "-- Choose Company" }, { class: 'form-control ' } %>
+</div>
+<% end %>
+
 <div class="form-group">
   <%= f.label :client_id %>
   <%= f.collection_select :client_id, @clients, :id, :client_details, { prompt: "-- Choose Client" }, { class: 'form-control ' } %>
@@ -21,23 +28,55 @@
 </div>
 
 <div class="form-group">
-  <%= f.label :sub_total %>
-  <%= f.text_field :sub_total, id: :quotation_sub_total, class: "form-control" %>
+  <div id="items">
+    <%= f.fields_for :items do |item| %>
+      <%= render 'item_fields', f: item %>
+    <% end %>
+    <hr>
+    <div class="links">
+      <%= link_to_add_association "Add item", f, :items, class: "btn btn-sm btn-success" %>
+    </div>
+  </div>
 </div>
 
-<div class="form-group">
-  <%= f.label :tax_rate %>
-  <%= f.text_field :tax_rate, id: :quotation_tax_rate, class: "form-control" %>
-</div>
+<hr>
 
-<div class="form-group">
-  <%= f.label :tax %>
-  <%= f.text_field :tax, id: :quotation_tax, class: "form-control" %>
+<div class="row">
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= f.label :sub_total %>
+      <div class="input-group">
+        <span class="input-group-addon">$</span>
+        <%= f.number_field :sub_total, id: :quotation_sub_total, class: "form-control", "readonly" => "readonly" %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= f.label :tax_rate %>
+      <div class="input-group">
+    <%= f.number_field :tax_rate, id: :quotation_tax_rate, class: "form-control", value: 0 %>
+        <span class="input-group-addon">%</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= f.label :tax %>
+      <div class="input-group">
+        <span class="input-group-addon">$</span>
+        <%= f.number_field :tax, id: :quotation_tax, class: "form-control", "readonly" => "readonly" %>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="form-group">
   <%= f.label :total %>
-  <%= f.text_field :total, id: :quotation_total, class: "form-control" %>
+  <div class="input-group">
+    <span class="input-group-addon">$</span>
+    <%= f.number_field :total, id: :quotation_total, class: "form-control", "readonly" => "readonly" %>
+  </div>
 </div>
 
 <div class="form-group">

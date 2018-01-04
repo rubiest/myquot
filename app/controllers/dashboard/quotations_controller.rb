@@ -10,11 +10,13 @@ class Dashboard::QuotationsController < DashboardController
   def new
     @quotation ||= Quotation.new
     @clients = current_user.clients
+    @company_profiles = current_user.company_profiles
     render
   end
 
   def create
     @clients = current_user.clients
+    @company_profiles = current_user.company_profiles
     @quotation = @user.quotations.new quotation_params
     if @quotation.save
       redirect_to dashboard_quotations_path, notice: 'Quotation created!'
@@ -25,6 +27,7 @@ class Dashboard::QuotationsController < DashboardController
 
   def edit
     @clients = current_user.clients
+    @company_profiles = current_user.company_profiles
     if @quotation
       render
     else
@@ -34,6 +37,7 @@ class Dashboard::QuotationsController < DashboardController
 
   def update
     @clients = current_user.clients
+    @company_profiles = current_user.company_profiles
     if @quotation.update quotation_params
       redirect_to dashboard_quotations_path, notice: 'Quotation updated!'
     else
@@ -64,6 +68,6 @@ class Dashboard::QuotationsController < DashboardController
     end
 
     def quotation_params
-      params.require(:quotation).permit(:user_id, :client_id, :ref_number, :valid_until, :status, :sub_total, :tax_rate, :tax, :total, :note)
+      params.require(:quotation).permit(:user_id, :sender_id, :client_id, :ref_number, :valid_until, :status, :sub_total, :tax_rate, :tax, :total, :note, items_attributes: [:id, :itemable_type, :itemable_id, :description, :quantity, :price, :total_price, :_destroy])
     end
 end

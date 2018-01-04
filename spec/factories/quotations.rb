@@ -2,6 +2,7 @@ FactoryBot.define do
   factory :quotation do
     association :user, factory: :user
     association :client, factory: :client
+    association :sender_id, factory: :company_profile
     ref_number { Faker::Code.asin }
     valid_until { Faker::Date.forward(23) }
     status "saved"
@@ -10,5 +11,8 @@ FactoryBot.define do
     tax "129.80"
     total "1427.80"
     note { Faker::Lorem.paragraph(2) }
+    after(:create) do |quotation|
+      FactoryBot.create(:item, itemable: quotation)
+    end
   end
 end

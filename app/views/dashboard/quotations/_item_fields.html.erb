@@ -1,0 +1,90 @@
+<div class="nested-fields">
+  <div class="card border-dark mb-3">
+    <div class="card-header">
+      Item
+    </div>
+    <div class="card-body">
+      <div class="form-group">
+        <%= f.label :description, "Description" %>
+        <%= f.text_area :description, class: "form-control", placeholder: "Your item description", rows: 3 %>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :price, "Unit Price" %>
+            <div class="input-group">
+              <span class="input-group-addon">$</span>
+              <%= f.number_field :price, class: "form-control price", placeholder: "ex: 1500", min: 1 %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :quantity, "Quantity" %>
+            <%= f.number_field :quantity, class: "form-control quantity", min: 1 %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :total_price, "Total Price" %>
+          <div class="input-group">
+            <span class="input-group-addon">$</span>
+            <%= f.text_field :total_price, class: "form-control total_price", "readonly" => "readonly" %>
+          </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <%= link_to_remove_association 'remove', f, class: "btn btn-sm btn-danger" %>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#items')
+  .on('cocoon:after-insert', function() {
+    $('.quantity').each(function(e) {
+      dep = $( this ).addClass( 'quantity_' + e );
+      classNameQ = $(dep).attr('class');
+    });
+    $('.price').each(function(e) {
+      minpre = $( this ).addClass( 'price_' + e );
+      classNameUp = $(minpre).attr('class');
+    });
+    $('.total_price').each(function(e) {
+      topri = $( this ).addClass( 'total_price_' + e );
+      classNameTp = $(topri).attr('class');
+    });
+    $('input').change(function(e)  {
+      dep1 = parseFloat($( dep ).val());
+      minpre1 = parseFloat($( minpre ).val());
+      var total_mnozi = 0;
+      total_mnozi = dep1 * minpre1;
+      parseFloat($( topri ).val(total_mnozi));
+      calculateSum();
+    });
+  });
+
+
+});
+
+function calculateSum() {
+	var sum = 0;
+	$(".total_price").each(function() {
+		if(!isNaN(this.value) && this.value.length!=0) {
+			sum += parseFloat(this.value);
+		}
+	});
+  // get the quotation_sub_total before tax
+  $("#quotation_sub_total").val(sum);
+  tax = $('#quotation_tax_rate').val()
+  // calculate the tax amount
+  var tax_rate = sum * ((tax / 100));
+  parseFloat($('#quotation_tax').val(tax_rate));
+  // calculate the final total price after tax
+  var final_amount = tax_rate += sum
+  parseFloat($('#quotation_total').val(tax_rate));
+}
+</script>
