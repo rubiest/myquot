@@ -10,6 +10,13 @@
 </div>
 <% end %>
 
+<% if current_user.enterprise? %>
+<div class="form-group">
+  <%= f.label :sender_id %>
+  <%= f.collection_select :sender_id, @company_profiles, :id, :company_name, { prompt: "-- Choose Company" }, { class: 'form-control ' } %>
+</div>
+<% end %>
+
 <div class="form-group">
   <%= f.label :client_id %>
   <%= f.collection_select :client_id, @clients, :id, :client_details, { prompt: "-- Choose Client" }, { class: 'form-control ' } %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180103043541) do
+ActiveRecord::Schema.define(version: 20180104090428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,8 +93,10 @@ ActiveRecord::Schema.define(version: 20180103043541) do
     t.text "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "sender_id"
     t.index ["client_id"], name: "index_quotations_on_client_id"
     t.index ["ref_number"], name: "index_quotations_on_ref_number", unique: true
+    t.index ["sender_id"], name: "index_quotations_on_sender_id"
     t.index ["user_id"], name: "index_quotations_on_user_id"
   end
 
@@ -128,5 +130,6 @@ ActiveRecord::Schema.define(version: 20180103043541) do
   add_foreign_key "company_profiles", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "quotations", "clients"
+  add_foreign_key "quotations", "company_profiles", column: "sender_id"
   add_foreign_key "quotations", "users"
 end
