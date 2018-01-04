@@ -23,10 +23,12 @@
 <div class="form-group">
   <div id="items">
     <%= f.fields_for :items do |item| %>
-      <%= render partial: 'item_fields', locals: {f: item} %>
+      <%= render 'item_fields', f: item %>
     <% end %>
     <hr>
-    <%= link_to_add_association "Add item", f, :items, class: "btn btn-sm btn-success" %>
+    <div class="links">
+      <%= link_to_add_association "Add item", f, :items, class: "btn btn-sm btn-success" %>
+    </div>
   </div>
 </div>
 
@@ -38,7 +40,7 @@
       <%= f.label :sub_total %>
       <div class="input-group">
         <span class="input-group-addon">$</span>
-        <%= f.number_field :sub_total, id: :quotation_sub_total, class: "form-control" %>
+        <%= f.number_field :sub_total, id: :quotation_sub_total, class: "form-control", "readonly" => "readonly" %>
       </div>
     </div>
   </div>
@@ -56,7 +58,7 @@
       <%= f.label :tax %>
       <div class="input-group">
         <span class="input-group-addon">$</span>
-        <%= f.number_field :tax, id: :quotation_tax, class: "form-control" %>
+        <%= f.number_field :tax, id: :quotation_tax, class: "form-control", "readonly" => "readonly" %>
       </div>
     </div>
   </div>
@@ -66,7 +68,7 @@
   <%= f.label :total %>
   <div class="input-group">
     <span class="input-group-addon">$</span>
-    <%= f.number_field :total, id: :quotation_total, class: "form-control" %>
+    <%= f.number_field :total, id: :quotation_total, class: "form-control", "readonly" => "readonly" %>
   </div>
 </div>
 
@@ -79,3 +81,9 @@
   <%= f.submit "Submit", class: "btn btn-primary" %>
   <%= link_to "Cancel", dashboard_quotations_path, class: "btn btn-default" %>
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    
+  });
+</script>
