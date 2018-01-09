@@ -1,6 +1,6 @@
 # MyQuot
 
-[![Build Status](https://travis-ci.org/rubiest/myquot.svg?branch=master)](https://travis-ci.org/rubiest/myquot)
+[![Build Status](https://travis-ci.org/rubiest/myquot.svg?branch=master)](https://travis-ci.org/rubiest/myquot) [![codecov](https://codecov.io/gh/rubiest/myquot/branch/master/graph/badge.svg)](https://codecov.io/gh/rubiest/myquot)
 
 ## What you have to know?
 
