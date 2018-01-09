@@ -51,6 +51,7 @@ end
 
 group :test do
   gem 'database_cleaner'
+  gem 'codecov', require: false
 end
 
 group :development do
