@@ -7,7 +7,7 @@ require "capistrano/rails"
 require "capistrano/faster_assets"
 require "capistrano/rbenv"
 set :rbenv_type, :user
-set :rbenv_ruby, '2.4.2'
+set :rbenv_ruby, '2.5.0'
 
 # Load the SCM plugin appropriate to your project:
 #
