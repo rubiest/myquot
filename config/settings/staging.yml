@@ -1,1 +1,10 @@
 app_url: http://staging.myquot.com
+s3:
+  bucket: myquot-staging
+  region: ap-southeast-1
+billplz:
+  url: https://billplz-staging.herokuapp.com
+  collections:
+    url: https://billplz-staging.herokuapp.com/api/v3/collections
+  bills:
+    url: https://billplz-staging.herokuapp.com/api/v3/bills

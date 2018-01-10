@@ -1,1 +1,10 @@
 app_url: http://myquot.com
+s3:
+  bucket: myquot-production
+  region: ap-southeast-1
+billplz:
+  url: https://www.billplz.com
+  collections:
+    url: https://www.billplz.com/api/v3/collections
+  bills:
+    url: https://www.billplz.com/api/v3/bills
