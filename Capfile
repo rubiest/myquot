@@ -8,6 +8,8 @@ require "capistrano/faster_assets"
 require "capistrano/rbenv"
 set :rbenv_type, :user
 set :rbenv_ruby, '2.5.0'
+require 'capistrano/ext/multistage'
+require 'capistrano/gitflow'
 
 # Load the SCM plugin appropriate to your project:
 #
