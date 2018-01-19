@@ -68,6 +68,7 @@ group :development do
   gem 'capistrano-rbenv', '~> 2.1'
   gem 'capistrano-faster-assets', '~> 1.0'
   gem 'capistrano-sidekiq'
+  gem 'capistrano-gitflow'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
