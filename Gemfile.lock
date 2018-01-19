@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/amirolahmad/capistrano-gitflow.git
+  revision: 73bb6e3319da61835e37832582d4c5d953aa3a38
+  specs:
+    capistrano-gitflow (1.4.5)
+      capistrano
+      stringex
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -63,9 +71,6 @@ GEM
       sshkit (~> 1.2)
     capistrano-faster-assets (1.1.0)
       capistrano (>= 3.1)
-    capistrano-gitflow (1.6.0)
-      capistrano
-      stringex
     capistrano-rails (1.3.1)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
@@ -311,7 +316,7 @@ DEPENDENCIES
   capistrano (~> 3.9)
   capistrano-bundler (~> 1.3)
   capistrano-faster-assets (~> 1.0)
-  capistrano-gitflow
+  capistrano-gitflow!
   capistrano-rails (~> 1.1)
   capistrano-rbenv (~> 2.1)
   capistrano-sidekiq
