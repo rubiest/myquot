@@ -2,6 +2,7 @@ class Quotation < ApplicationRecord
   enum status: [:saved, :sent, :accepted, :rejected]
   belongs_to :user
   belongs_to :client
+  belongs_to :sender, class_name: "CompanyProfile", foreign_key: "sender_id"
   has_many :items, as: :itemable, dependent: :destroy
   accepts_nested_attributes_for :items, allow_destroy: true
 

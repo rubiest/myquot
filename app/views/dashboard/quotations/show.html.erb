@@ -1,0 +1,74 @@
+<div class="centered-box">
+  <div class="card">
+    <div class="card-header">
+      <%= @quotation.ref_number %> (<%= @quotation.client.contact_person_name %>)
+    </div>
+    <div class="card-body">
+      <table class="table table-bordered">
+        <tbody>
+          <% if current_user.enterprise? && !@quotation.sender_id.blank?  %>
+          <tr>
+            <th>Sender</th>
+            <td colspan="5"><%= @quotation.sender_id.blank? ? "N/A" : @quotation.sender.company_name %></td>
+          </tr>
+          <% end %>
+          <tr>
+            <th>Date Created</th>
+            <td><%= @quotation.created_at.strftime("%d %B %Y") %></td>
+            <th>Valid Until</th>
+            <td><%= @quotation.valid_until.strftime("%d %B %Y") %></td>
+            <th>Status</th>
+            <td><%= @quotation.status %></td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>Items</h3>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Description</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+            <th scope="col">Total Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @quotation.items.each_with_index do |item,index| %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= item.description %></td>
+            <td><%= item.quantity %></td>
+            <td><%= number_to_currency(item.price, unit: "RM") %></td>
+            <td><%= number_to_currency(item.total_price, unit: "RM") %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th>Sub Total</th>
+            <td><%= number_to_currency(@quotation.sub_total, unit: "RM") %></td>
+          </tr>
+          <tr>
+            <th>Tax Rate</th>
+            <td><%= @quotation.tax_rate %>%</td>
+          </tr>
+          <tr>
+            <th>Total Tax</th>
+            <td><%= number_to_currency(@quotation.tax, unit: "RM") %></td>
+          </tr>
+          <tr>
+            <th>Total Price</th>
+            <td><%= number_to_currency(@quotation.total, unit: "RM") %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer">
+      <%= link_to 'Edit quotation', edit_dashboard_quotation_path(@quotation), class: "btn btn-primary" %>
+      <%= link_to 'Back to listings', dashboard_quotations_path, class: "btn btn-link" %>
+    </div>
+  </div>
+</div>

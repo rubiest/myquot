@@ -3,8 +3,9 @@ require 'rails_helper'
 RSpec.describe Dashboard::QuotationsController, type: :controller do
   let(:user) { FactoryBot.create(:user) }
   let(:client) { FactoryBot.create(:client, user_id: user.id) }
+  let(:sender) { FactoryBot.create(:company_profile, user_id: user.id) }
   let(:quotation) { FactoryBot.create(:quotation, user_id: user.id, client_id: client.id) }
-  let(:valid_attributes) { FactoryBot.attributes_for :quotation, client_id: client.id }
+  let(:valid_attributes) { FactoryBot.attributes_for(:quotation).merge({client_id: client.id, sender_id: sender.id}) }
   let(:invalid_attributes) { FactoryBot.attributes_for(:quotation).merge({client_id: nil}) }
   let(:new_attributes) { FactoryBot.attributes_for(:quotation).merge({note: "Note is here"}) }
   let(:valid_session) { sign_in(user) }
